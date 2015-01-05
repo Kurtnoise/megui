@@ -80,7 +80,7 @@ namespace MeGUI
         private ProxyMode httpProxyMode;
         private ProgramSettings aften, avimuxgui, avisynth, avisynthplugins, besplit, dgavcindex, dgindex, dgindexnv,
                                 eac3to, ffmpeg, ffms, flac, lame, lsmash, mkvmerge, mp4box, neroaacenc, oggenc,
-                                opus, pgcdemux, qaac, tsmuxer, vobsub, x264, x264_10b, x265, xvid;
+                                opus, pgcdemux, qaac, fdkaac, tsmuxer, vobsub, x264, x264_10b, x265, xvid;
         #endregion
         public MeGUISettings()
 		{
@@ -1177,6 +1177,12 @@ namespace MeGUI
             get { return xvid; }
             set { xvid = value; }
         }
+
+        public ProgramSettings Fdkaac
+        {
+            get { return fdkaac; }
+            set { fdkaac = value; }
+        }
         #endregion
 
         private bool bPortableAviSynth;
@@ -1264,6 +1270,8 @@ namespace MeGUI
                 pgcdemux = new ProgramSettings("pgcdemux");
             if (qaac == null)
                 qaac = new ProgramSettings("qaac");
+            if (fdkaac == null)
+                fdkaac = new ProgramSettings("fdkaac");
             if (tsmuxer == null)
                 tsmuxer = new ProgramSettings("tsmuxer");
             if (vobsub == null)
@@ -1332,6 +1340,7 @@ namespace MeGUI
             opus.UpdateInformation("opus", "Opus", Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), @"tools\opus\opusenc.exe"));
             pgcdemux.UpdateInformation("pgcdemux", "PgcDemux", Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), @"tools\pgcdemux\pgcdemux.exe"));
             qaac.UpdateInformation("qaac", "QAAC", Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), @"tools\qaac\qaac.exe"));
+            fdkaac.UpdateInformation("fdkaac", "FDK-AAC", Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), @"tools\fdkaac\fdkaac.exe"));
             tsmuxer.UpdateInformation("tsmuxer", "tsMuxeR", Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), @"tools\tsmuxer\tsmuxer.exe"));
             vobsub.UpdateInformation("vobsub", "VobSub", Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), @"tools\vobsub\vobsub.dll"));
 #if x64
